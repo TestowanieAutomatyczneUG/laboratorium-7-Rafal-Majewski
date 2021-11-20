@@ -19,3 +19,7 @@ class TestPasswordValidator(unittest.TestCase):
 		self.assertTrue(self.passwordValidator.validate("Abcdefgh3@"))
 	def test_validate_1_uppercase_letter_and_7_lowercase_letter_and_1_digit(self):
 		self.assertFalse(self.passwordValidator.validate("kkiuUkaa2"))
+	def test_validate_non_iterable_object(self):
+		self.assertRaises(TypeError, self.passwordValidator.validate, 123)
+	def test_validate_list_with_non_string_elements(self):
+		self.assertRaises(TypeError, self.passwordValidator.validate, ["a", 2, 3])
